@@ -1,9 +1,9 @@
-$colums: 7;
+$columns: 7;
 $padding: 10px;
 $gap: 1px;
 $daySize: 100px;
-$calendarWidth: $colums * $daySize + 6 * $gap;
-$border: 1px;
+$calendarWidth: $columns * $daySize + ($columns - 1) * $gap + 2 * $padding;
+$border: 1px solid black;
 $totalDays: 31;
 $startDays: (
   'mon': 0,
@@ -24,6 +24,7 @@ body {
 }
 
 .calendar {
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   width: $calendarWidth;
@@ -39,7 +40,7 @@ body {
     height: $daySize;
     width: $daySize;
     background-color: #eee;
-    border: $border solid black;
+    border: $border;
     transition: 0.5s;
 
     &::before {
@@ -72,7 +73,11 @@ body {
 }
 
 @each $day, $index in $startDays {
-  .calendar--start-day-#{$day} .calendar__day:nth-child(1) {
-    margin-left: $index * ($gap + $daySize);
+  .calendar--start-day-#{$day} {
+    .calendar__day:nth-child(1) {
+      $margin-offset: $index * ($gap + $daySize);
+
+      margin-left: max(0, $margin-offset);
+    }
   }
 }
