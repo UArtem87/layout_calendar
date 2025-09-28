@@ -1,18 +1,18 @@
 $columns: 7;
-$padding: 10px;
+$padding: 5px;
 $gap: 1px;
 $daySize: 100px;
 $calendarWidth: $columns * $daySize + ($columns - 1) * $gap + 2 * $padding;
 $border: 1px solid black;
 $totalDays: 31;
 $startDays: (
-  'sun': 6,
-  'mon': 0,
-  'tue': 1,
-  'wed': 2,
-  'thu': 3,
-  'fri': 4,
-  'sat': 5,
+  'sun': 0,
+  'mon': 1,
+  'tue': 2,
+  'wed': 3,
+  'thu': 4,
+  'fri': 5,
+  'sat': 6,
 );
 
 body {
